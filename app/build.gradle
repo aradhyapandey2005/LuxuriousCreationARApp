@@ -1,19 +1,23 @@
 plugins {
-    alias(libs.plugins.android.application)
+    id 'com.android.application'
 }
 
 android {
-    namespace 'com.example.luxuriouscreationarapp'
-    compileSdk 35
+    compileSdkVersion 34 // Updated to the latest SDK version
 
     defaultConfig {
-        applicationId "com.example.luxuriouscreationarapp"
-        minSdk 24
-        targetSdk 35
+        applicationId "com.pulkit.platform.luxuriouscreation"
+        minSdkVersion 21
+        targetSdkVersion 34 // Updated to the latest SDK version
         versionCode 1
         versionName "1.0"
-
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        // Enable Java 17 features
+        compileOptions {
+            sourceCompatibility JavaVersion.VERSION_17
+            targetCompatibility JavaVersion.VERSION_17
+        }
     }
 
     buildTypes {
@@ -22,17 +26,15 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_11
-        targetCompatibility JavaVersion.VERSION_11
-    }
 }
 
 dependencies {
-
-    implementation libs.appcompat
-    implementation libs.material
-    testImplementation libs.junit
-    androidTestImplementation libs.ext.junit
-    androidTestImplementation libs.espresso.core
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'androidx.appcompat:appcompat:1.6.1' // Updated to the latest version
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4' // Updated to the latest version
+    implementation 'com.google.android.material:material:1.9.0' // Updated to the latest version
+    implementation 'de.hdodenhof:circleimageview:3.1.0' // Updated to the latest version
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5' // Updated to the latest version
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1' // Updated to the latest version
 }
